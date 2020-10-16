@@ -23,10 +23,12 @@ def load_image_data():
 # Loads all the boolean y-data files, concatenates and returns all of them
 def load_all_y_data():
     data = pd.DataFrame()
-    for x in range(0, 9):
+    for x in range(0, 10):
         y = pd.read_csv("data/y_train_smpl_"+str(x)+".csv", header=0)
-        y.columns = ["Class " + str(x)]
         data = pd.concat([data, y], axis=1)
+
+    data.columns = ["Speed Limit 20", "Speed Limit 30", "Speed Limit 50", "Speed Limit 60", "Speed Limit 70",
+                    "Left Turn", "Right Turn", "Beware Pedestrian Crossing", "Beware Children", "Beware Cycle Route Ahead"]
     return data
 
 
