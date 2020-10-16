@@ -11,6 +11,7 @@ import sys
 assert sys.version_info >= (3, 5)
 assert sklearn.__version__ >= "0.20"
 
+# WILL TAKE TIME TO EXECUTE!
 
 images = load_image_data_with_ten_one()
 corr_matrix = images.corr()
