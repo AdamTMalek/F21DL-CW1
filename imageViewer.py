@@ -11,7 +11,7 @@ IMAGES_DISPLAYED = IMAGES_DISPLAYED_X * IMAGES_DISPLAYED_Y
 
 def readCSV_Lines(min, max):
     with open(X_ROWS_FILE, "r") as csvfile:
-        datareader = csv.reader(csvile)
+        datareader = csv.reader(csvfile)
         next(datareader)#skip header row
         for i in range(min):
             next(datareader)
