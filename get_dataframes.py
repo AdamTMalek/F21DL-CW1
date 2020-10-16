@@ -38,3 +38,7 @@ def load_image_data_with_ten_one():
     y_data = load_all_y_data()
     concatenated = pd.concat([x_data, y_data], axis=1)
     return concatenated
+
+
+def shuffle_dataframe(data_frame):
+    return data_frame.sample(frac=1)
