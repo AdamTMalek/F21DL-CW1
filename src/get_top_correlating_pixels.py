@@ -1,11 +1,4 @@
-from get_dataframes import load_image_data_with_ten_one
-import matplotlib.pyplot as plt
-import matplotlib as mpl
-import pandas as pd
-import urllib
-import tarfile
-import os
-import numpy as np
+from src.get_dataframes import load_image_data_with_ten_one
 import sklearn
 import sys
 assert sys.version_info >= (3, 5)
