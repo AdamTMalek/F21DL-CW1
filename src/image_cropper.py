@@ -54,8 +54,9 @@ def main(sys_args):
     parser = argparse.ArgumentParser(description="Crops the images")
     parser.add_argument('original_file', type=str, help='CSV File with original images')
     parser.add_argument('new_size', type=int, help='New size (width and height)')
-    args = parser.parse_args(sys_args)
-    print(args)
+    args = parser.parse_args(sys_args[1:])
+
+    crop_images(args.original_file, args.new_size)
 
 
 if __name__ == "__main__":
