@@ -14,8 +14,8 @@ assert sklearn.__version__ >= "0.20"
 
 # Loads the image and concatenates with the y-data holding class data from 0-9
 def load_image_data():
-    x_data = pd.read_csv("../data/x_train_gr_smpl.csv")
-    y_data = pd.read_csv("../data/y_train_smpl.csv", names=["Class"])
+    x_data = pd.read_csv("data/x_train_gr_smpl.csv")
+    y_data = pd.read_csv("data/y_train_smpl.csv", names=["Class"])
     concatenated = pd.concat([x_data, y_data], axis=1)
     return concatenated
 
@@ -34,7 +34,7 @@ def load_all_y_data():
 
 # Loads the image and concatenates with each boolean y-data file, 0=true 1=false
 def load_image_data_with_ten_one():
-    x_data = pd.read_csv("../data/x_train_gr_smpl.csv")
+    x_data = pd.read_csv("data/x_train_gr_smpl.csv")
     y_data = load_all_y_data()
     concatenated = pd.concat([x_data, y_data], axis=1)
     return concatenated
@@ -42,3 +42,7 @@ def load_image_data_with_ten_one():
 
 def shuffle_dataframe(data_frame):
     return data_frame.sample(frac=1)
+
+
+images = load_image_data_with_ten_one()
+print(images)
