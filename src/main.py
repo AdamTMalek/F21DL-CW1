@@ -4,10 +4,11 @@ from get_top_correlating_pixels import remove_none_corr_pixels
 
 
 def main():
-    crop_images("../data/x_train_gr_smpl.csv", 40)
+    crop_images("data/x_train_gr_smpl.csv", 40)
     print("Done cropping")
-    images = load_image_data_with_ten_one("../data/x_train_gr_smpl_40.csv")
+    images = load_image_data_with_ten_one("data/x_train_gr_smpl_40.csv")
     shuffle_dataframe(images)
+    print(images)
     print("Done loading and shuffling")
     pruned_images = remove_none_corr_pixels(images, 10)
     print("Done pruning non correlating pixels")

@@ -14,8 +14,8 @@ assert sklearn.__version__ >= "0.20"
 
 # Loads the image and concatenates with the y-data holding class data from 0-9
 def load_image_data():
-    x_data = pd.read_csv("../data/x_train_gr_smpl.csv")
-    y_data = pd.read_csv("../data/y_train_smpl.csv", names=["Class"])
+    x_data = pd.read_csv("data/x_train_gr_smpl.csv")
+    y_data = pd.read_csv("data/y_train_smpl.csv", names=["Class"])
     concatenated = pd.concat([x_data, y_data], axis=1)
     return concatenated
 
@@ -24,7 +24,7 @@ def load_image_data():
 def load_all_y_data():
     data = pd.DataFrame()
     for x in range(0, 10):
-        y = pd.read_csv("../data/y_train_smpl_"+str(x)+".csv", header=0)
+        y = pd.read_csv("data/y_train_smpl_"+str(x)+".csv", header=0)
         data = pd.concat([data, y], axis=1)
 
     data.columns = ["Speed Limit 20", "Speed Limit 30", "Speed Limit 50", "Speed Limit 60", "Speed Limit 70",
