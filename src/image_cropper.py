@@ -44,10 +44,9 @@ def crop_images(original_file_path: str, new_size: int) -> None:
 
     with open(original_file_path, 'r') as original_file:
         with open(cropped_images_file, 'w') as new_file:
-            next(original_file)  # Skip headers line
             for line in original_file:
                 cropped_line = crop_image(line, new_size)
-                new_file.write(cropped_line)
+                new_file.write(cropped_line + '\n')
 
 
 def main(sys_args):
