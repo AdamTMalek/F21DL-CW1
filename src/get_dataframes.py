@@ -33,8 +33,8 @@ def load_all_y_data():
 
 
 # Loads the image and concatenates with each boolean y-data file, 0=true 1=false
-def load_image_data_with_ten_one():
-    x_data = pd.read_csv("data/x_train_gr_smpl.csv")
+def load_image_data_with_ten_one(x_path):
+    x_data = pd.read_csv(x_path)
     y_data = load_all_y_data()
     concatenated = pd.concat([x_data, y_data], axis=1)
     return concatenated
@@ -42,7 +42,3 @@ def load_image_data_with_ten_one():
 
 def shuffle_dataframe(data_frame):
     return data_frame.sample(frac=1)
-
-
-images = load_image_data_with_ten_one()
-print(images)
