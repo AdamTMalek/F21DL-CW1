@@ -33,8 +33,3 @@ def remove_none_corr_pixels(images, i):
     images.drop(images.columns.difference(top_pixels), 1, inplace=True)
     print(sorted(top_pixels, key=int))
     return images
-
-
-images = load_image_data_with_ten_one("data/x_train_gr_smpl.csv")
-pruned_images = remove_none_corr_pixels(images, 10)
-print(pruned_images)
