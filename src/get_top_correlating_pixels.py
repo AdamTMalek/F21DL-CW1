@@ -29,7 +29,7 @@ def remove_none_corr_pixels(images, i):
     for class_tag in classes:
         top_pixels = np.append(
             top_pixels, get_top_corr_pixels(images, class_tag, i))
-    print(top_pixels)
     images.drop(images.columns.difference(top_pixels), 1, inplace=True)
+    print("None correlating pixels:")
     print(sorted(top_pixels, key=int))
     return images
