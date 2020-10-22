@@ -1,13 +1,17 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QGridLayout, QPushButton, QWidget
-from PyQt5.QtGui import QPixmap, QImage, QColor
+import csv
+import sys
+
 from PyQt5.QtCore import Qt
-import numpy as np, sys, csv
+from PyQt5.QtGui import QPixmap, QImage, QColor
+from PyQt5.QtWidgets import QApplication, QLabel, QGridLayout, QPushButton, QWidget
+from PyQt5.QtWidgets import QFileDialog
 
 IMAGE_SIZE = 48
 X_ROWS_FILE = 'x_train_gr_smpl.csv'
 IMAGES_DISPLAYED_X = 8
 IMAGES_DISPLAYED_Y = 12
 IMAGES_DISPLAYED = IMAGES_DISPLAYED_X * IMAGES_DISPLAYED_Y
+
 
 def readCSV_Lines(min, max):
     with open(X_ROWS_FILE, "r") as csvfile:
@@ -27,7 +31,7 @@ def createImage(pixelArray):
         i += 1
     return im
 
-class MainWindow(QWidget):    
+class MainWindow(QWidget):
     def leftClickCallback(self):
         if self.currentLine > 0:
             self.currentLine -= IMAGES_DISPLAYED
@@ -75,7 +79,7 @@ class MainWindow(QWidget):
         self.createNavBar()
 
         overallLayout.addLayout(self.navBar_layout, 0, 0)
-        self.imageLabel = [[0 for x in range(IMAGES_DISPLAYED_Y)] for y in range(IMAGES_DISPLAYED_X)] 
+        self.imageLabel = [[0 for x in range(IMAGES_DISPLAYED_Y)] for y in range(IMAGES_DISPLAYED_X)]
 
         imageLayout = QGridLayout()
         gen = readCSV_Lines(0, IMAGES_DISPLAYED)
@@ -87,7 +91,21 @@ class MainWindow(QWidget):
 
         overallLayout.addLayout(imageLayout, 1, 0)
 
-app = QApplication(sys.argv)
-w = MainWindow()
-w.show()
-sys.exit(app.exec_())
+
+def get_file_picker_dialog() -> QFileDialog:
+    dialog = QFileDialog()
+    dialog.setWindowTitle("Choose images to display")
+    dialog.setFileMode(QFileDialog.AnyFile)
+    dialog.setNameFilter("CSV files (*.csv)")
+    return dialog
+
+
+def main():
+    app = QApplication(sys.argv)
+    file_dialog = get_file_picker_dialog()
+    if file_dialog.exec_():
+        chosen_file = file_dialog.selectedFiles()[0]
+
+
+if __name__ == "__main__":
+    main()
