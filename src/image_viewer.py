@@ -65,14 +65,14 @@ class ImageViewer(QWidget):
     def _left_click_callback(self):
         if self.current_line > 0:
             self.current_line -= self.total_images
-        gen = self._read_csv_lines(self.current_line, self.current_line + self.total_images)
-        for y in range(self.images_columns):
-            for x in range(self.images_rows):
-                self._set_displayed_image(self.image_label[x][y], next(gen))
+        self._repopulate_images()
 
     def _right_click_callback(self):
         if self.current_line < 10000:
             self.current_line += self.total_images
+        self._repopulate_images()
+
+    def _repopulate_images(self):
         gen = self._read_csv_lines(self.current_line, self.current_line + self.total_images)
         for y in range(self.images_columns):
             for x in range(self.images_rows):
