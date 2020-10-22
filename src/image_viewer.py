@@ -1,95 +1,100 @@
 import csv
 import sys
+import math
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap, QImage, QColor
 from PyQt5.QtWidgets import QApplication, QLabel, QGridLayout, QPushButton, QWidget
 from PyQt5.QtWidgets import QFileDialog
 
-IMAGE_SIZE = 48
-X_ROWS_FILE = 'x_train_gr_smpl.csv'
-IMAGES_DISPLAYED_X = 8
-IMAGES_DISPLAYED_Y = 12
-IMAGES_DISPLAYED = IMAGES_DISPLAYED_X * IMAGES_DISPLAYED_Y
 
+class ImageViewer(QWidget):
+    def __init__(self, file):
+        super().__init__()
+        self.file = file
+        self.image_size = self._get_image_size()
+        self.images_rows = 5
+        self.images_columns = 5
+        self.total_images = self.images_rows * self.images_columns
+        self.title = "Image Viewer"
+        self.setWindowTitle(self.title)
+        self.current_line = 0
+        self.overall_layout = QGridLayout()
+        self.setLayout(self.overall_layout)
+        self.current_line_label = QLabel("0")
+        self.navbar_layout = QGridLayout()
+        self._create_navbar()
+        self.overall_layout.addLayout(self.navbar_layout, 0, 0)
+        self.image_label = [[0 for _ in range(self.images_columns)] for _ in range(self.images_rows)]
+        self.image_layout = QGridLayout()
 
-def readCSV_Lines(min, max):
-    with open(X_ROWS_FILE, "r") as csvfile:
-        datareader = csv.reader(csvfile)
-        next(datareader)#skip header row
-        for i in range(min):
-            next(datareader)
-        for i in range(max-min):
-            yield next(datareader)
+        self._display_images()
 
-def createImage(pixelArray):
-    im = QImage(IMAGE_SIZE, IMAGE_SIZE, QImage.Format_RGB32)
-    i = 0
-    for pixel in pixelArray:
-        pixelVal = int(float(pixel))
-        im.setPixel(i % IMAGE_SIZE, i / IMAGE_SIZE, QColor(pixelVal, pixelVal, pixelVal, 255).rgb())
-        i += 1
-    return im
+    def _get_image_size(self) -> int:
+        with open(self.file, 'r') as file:
+            line = file.readline()
+            total_pixels = len(line.split(','))
+            return int(math.sqrt(total_pixels))
 
-class MainWindow(QWidget):
-    def leftClickCallback(self):
-        if self.currentLine > 0:
-            self.currentLine -= IMAGES_DISPLAYED
-        gen = readCSV_Lines(self.currentLine, self.currentLine + IMAGES_DISPLAYED)
-        for y in range(IMAGES_DISPLAYED_Y):
-            for x in range(IMAGES_DISPLAYED_X):
-                self.setDisplayedImage(self.imageLabel[x][y], next(gen))
+    def _display_images(self):
+        gen = self._read_csv_lines(0, self.total_images)
+        for y in range(self.images_columns):
+            for x in range(self.images_rows):
+                self.image_label[x][y] = QLabel(self)
+                self._set_displayed_image(self.image_label[x][y], next(gen))
+                self.image_layout.addWidget(self.image_label[x][y], x, y)
 
-    def rightClickCallback(self):
-        if self.currentLine < 10000:
-            self.currentLine += IMAGES_DISPLAYED
-        gen = readCSV_Lines(self.currentLine, self.currentLine + IMAGES_DISPLAYED)
-        for y in range(IMAGES_DISPLAYED_Y):
-            for x in range(IMAGES_DISPLAYED_X):
-                self.setDisplayedImage(self.imageLabel[x][y], next(gen))
+        self.overall_layout.addLayout(self.image_layout, 1, 0)
 
-    def createNavBar(self):
-        self.navBar_layout = QGridLayout()
+    def _read_csv_lines(self, start: int, end: int):
+        with open(self.file, "r") as file:
+            data_reader = csv.reader(file)
+            next(data_reader)  # skip header row
+            for i in range(start):
+                next(data_reader)
+            for i in range(end - start):
+                yield next(data_reader)
 
+    def _create_image(self, pixel_array):
+        image = QImage(self.image_size, self.image_size, QImage.Format_RGB32)
+        for i, pixel in enumerate(pixel_array):
+            pixelVal = int(float(pixel))
+            image.setPixel(i % self.image_size, i // self.image_size, QColor(pixelVal, pixelVal, pixelVal, 255).rgb())
+        return image
+
+    def _left_click_callback(self):
+        if self.current_line > 0:
+            self.current_line -= self.total_images
+        gen = self._read_csv_lines(self.current_line, self.current_line + self.total_images)
+        for y in range(self.images_columns):
+            for x in range(self.images_rows):
+                self._set_displayed_image(self.image_label[x][y], next(gen))
+
+    def _right_click_callback(self):
+        if self.current_line < 10000:
+            self.current_line += self.total_images
+        gen = self._read_csv_lines(self.current_line, self.current_line + self.total_images)
+        for y in range(self.images_columns):
+            for x in range(self.images_rows):
+                self._set_displayed_image(self.image_label[x][y], next(gen))
+
+    def _create_navbar(self):
         leftButton = QPushButton("<")
-        leftButton.clicked.connect(self.leftClickCallback)
-        self.navBar_layout.addWidget(leftButton, 0, 0)
+        leftButton.clicked.connect(self._left_click_callback)
+        self.navbar_layout.addWidget(leftButton, 0, 0)
 
-        self.currentLineLabel = QLabel("0")
-        self.navBar_layout.addWidget(self.currentLineLabel, 0, 1)
+        self.navbar_layout.addWidget(self.current_line_label, 0, 1)
 
         rightButton = QPushButton(">")
-        rightButton.clicked.connect(self.rightClickCallback)
-        self.navBar_layout.addWidget(rightButton, 0, 2)
+        rightButton.clicked.connect(self._right_click_callback)
+        self.navbar_layout.addWidget(rightButton, 0, 2)
 
-    def setDisplayedImage(self, label, pixelArray):
-        image = createImage(pixelArray)
+    def _set_displayed_image(self, label, pixel_array):
+        image = self._create_image(pixel_array)
         pixmap = QPixmap.fromImage(image)
         label.setPixmap(pixmap.scaled(150, 150, Qt.KeepAspectRatio))
         label.repaint()
-        self.currentLineLabel.setText(str(self.currentLine))
-
-    def __init__(self):
-        super().__init__()
-        self.title = "Image Viewer"
-        self.setWindowTitle(self.title)
-        self.currentLine = 0
-        overallLayout = QGridLayout()
-        self.setLayout(overallLayout)
-        self.createNavBar()
-
-        overallLayout.addLayout(self.navBar_layout, 0, 0)
-        self.imageLabel = [[0 for x in range(IMAGES_DISPLAYED_Y)] for y in range(IMAGES_DISPLAYED_X)]
-
-        imageLayout = QGridLayout()
-        gen = readCSV_Lines(0, IMAGES_DISPLAYED)
-        for y in range(IMAGES_DISPLAYED_Y):
-            for x in range(IMAGES_DISPLAYED_X):
-                self.imageLabel[x][y] = QLabel(self)
-                self.setDisplayedImage(self.imageLabel[x][y], next(gen))
-                imageLayout.addWidget(self.imageLabel[x][y], x, y)
-
-        overallLayout.addLayout(imageLayout, 1, 0)
+        self.current_line_label.setText(str(self.current_line))
 
 
 def get_file_picker_dialog() -> QFileDialog:
@@ -102,9 +107,14 @@ def get_file_picker_dialog() -> QFileDialog:
 
 def main():
     app = QApplication(sys.argv)
+
     file_dialog = get_file_picker_dialog()
+
     if file_dialog.exec_():
         chosen_file = file_dialog.selectedFiles()[0]
+        image_viewer = ImageViewer(chosen_file)
+        image_viewer.show()
+        sys.exit(app.exec_())
 
 
 if __name__ == "__main__":
