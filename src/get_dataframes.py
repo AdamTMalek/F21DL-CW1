@@ -19,6 +19,10 @@ def load_image_data():
     concatenated = pd.concat([x_data, y_data], axis=1)
     return concatenated
 
+# Only load images file and returns it
+def load_image_data_without_y_data():
+    x_data = pd.read_csv("../data/x_train_gr_smpl.csv")
+    return x_data
 
 # Loads all the boolean y-data files, concatenates and returns all of them
 def load_all_y_data():
