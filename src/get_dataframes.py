@@ -13,18 +13,22 @@ assert sklearn.__version__ >= "0.20"
 
 
 # Loads the image and concatenates with the y-data holding class data from 0-9
-def load_image_data():
-    x_data = pd.read_csv("data/x_train_gr_smpl.csv")
-    y_data = pd.read_csv("data/y_train_smpl.csv", names=["Class"])
+def load_image_data(x_path, y_path):
+    x_data = pd.read_csv(x_path)
+    y_data = pd.read_csv(y_path)
     concatenated = pd.concat([x_data, y_data], axis=1)
     return concatenated
 
 # Only load images file and returns it
+
+
 def load_image_data_without_y_data():
     x_data = pd.read_csv("../data/x_train_gr_smpl.csv")
     return x_data
 
 # Loads all the boolean y-data files, concatenates and returns all of them
+
+
 def load_all_y_data():
     data = pd.DataFrame()
     for x in range(0, 10):
