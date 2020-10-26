@@ -1,4 +1,4 @@
-from get_dataframes import load_image_data_with_ten_one
+from dataframe_manipulation import load_image_data_with_ten_one
 from image_cropper import crop_images
 import pandas as pd
 import numpy as np

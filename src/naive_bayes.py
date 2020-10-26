@@ -1,7 +1,7 @@
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn import metrics
-from get_dataframes import separate_x_and_y
+from dataframe_manipulation import separate_x_and_y
 
 
 def naive_bayes(images):

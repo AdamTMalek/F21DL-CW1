@@ -1,5 +1,5 @@
 from image_cropper import crop_images
-from get_dataframes import load_image_data, shuffle_dataframe
+from dataframe_manipulation import load_image_data, shuffle_dataframe
 from naive_bayes import naive_bayes
 import pandas as pd
 
