@@ -32,7 +32,11 @@ def separate_images_to_csv():
         df.to_csv("../data/individual images/" + str(i) + ".csv")
 
 
-def naive_bayes(x_data, y_data):
+def naive_bayes(images):
+
+    x_data = images.iloc[:, images.columns != '0']
+    y_data = images.iloc[:, -1:]
+
     print(x_data)
     print(y_data)
     x_train, x_test, y_train, y_test = train_test_split(
