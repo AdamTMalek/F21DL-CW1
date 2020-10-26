@@ -1,6 +1,5 @@
 from image_cropper import crop_images
-from get_dataframes import load_image_data, load_image_data_with_ten_one, shuffle_dataframe
-from get_top_correlating_pixels import remove_none_corr_pixels
+from get_dataframes import load_image_data, shuffle_dataframe
 from naive_bayes import naive_bayes
 import pandas as pd
 

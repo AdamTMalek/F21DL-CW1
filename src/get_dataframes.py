@@ -1,10 +1,4 @@
-import matplotlib.pyplot as plt
-import matplotlib as mpl
 import pandas as pd
-import urllib
-import tarfile
-import os
-import numpy as np
 import sklearn
 import sys
 assert sys.version_info >= (3, 5)
@@ -20,15 +14,11 @@ def load_image_data(x_path, y_path):
     return concatenated
 
 # Only load images file and returns it
-
-
 def load_image_data_without_y_data():
     x_data = pd.read_csv("../data/x_train_gr_smpl.csv")
     return x_data
 
 # Loads all the boolean y-data files, concatenates and returns all of them
-
-
 def load_all_y_data():
     data = pd.DataFrame()
     for x in range(0, 10):
@@ -42,11 +32,18 @@ def load_all_y_data():
 
 # Loads the image and concatenates with each boolean y-data file, 0=true 1=false
 def load_image_data_with_ten_one(x_path):
+
     x_data = pd.read_csv(x_path)
     y_data = load_all_y_data()
     concatenated = pd.concat([x_data, y_data], axis=1)
     return concatenated
 
+# Splits x and y data from a combined images dataframe
+def separate_x_and_y(images):
+
+    x_data = images.iloc[:, images.columns != '0']
+    y_data = images.iloc[:, -1:]
+    return x_data, y_data
 
 def shuffle_dataframe(data_frame):
     return data_frame.sample(frac=1)
