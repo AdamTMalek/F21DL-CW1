@@ -12,5 +12,5 @@ def naive_bayes(images):
     naive_bayes_model = MultinomialNB()
     naive_bayes_model.fit(x_train, y_train)
     y_pred = naive_bayes_model.predict(x_test)
-    print("Gaussian Naive Bayes model accuracy(in %):",
+    print("Multinomial Naive Bayes model accuracy(in %):",
           metrics.accuracy_score(y_test, y_pred)*100)
