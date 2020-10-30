@@ -1,0 +1,206 @@
+=========== Unpruned ================
+Multinomial Naive Bayes model accuracy(in %): 34.21052631578947
+                            Speed Limit 20  Speed Limit 30  Speed Limit 50  Speed Limit 60  Speed Limit 70  Left Turn  Right Turn  Beware Pedestrian Crossing  Beware Children  Beware Cycle Route Ahead
+Speed Limit 20                          39               4              17              15               5          1           1                           0                1                         2
+Speed Limit 30                         148             182             150             157             203          8          21                           0                0                        33
+Speed Limit 50                          51              74             254             114             360         10           8                           0                1                        17
+Speed Limit 60                          27              46             101             202             172          7           4                           0                2                        11
+Speed Limit 70                          32              59              77             111             455          1           6                           0                0                        10
+Left Turn                                0               0               2               0               3         57           1                           8               12                         7
+Right Turn                               0               3               6               5               1         49          15                          18               21                        32
+Beware Pedestrian Crossing               0               0               0               9               0         42           5                          31                1                         6
+Beware Children                          1               1               1               8               0         78          27                          11               58                        35
+Beware Cycle Route Ahead                 0               5              11               7               6         42           4                           5               10                        33
+                            precision    recall  f1-score   support
+
+            Speed Limit 20       0.13      0.46      0.20        85
+            Speed Limit 30       0.49      0.20      0.29       902
+            Speed Limit 50       0.41      0.29      0.34       889
+            Speed Limit 60       0.32      0.35      0.34       572
+            Speed Limit 70       0.38      0.61      0.47       751
+                 Left Turn       0.19      0.63      0.30        90
+                Right Turn       0.16      0.10      0.12       150
+Beware Pedestrian Crossing       0.42      0.33      0.37        94
+           Beware Children       0.55      0.26      0.36       220
+  Beware Cycle Route Ahead       0.18      0.27      0.21       123
+
+                  accuracy                           0.34      3876
+                 macro avg       0.32      0.35      0.30      3876
+              weighted avg       0.39      0.34      0.34      3876
+
+=========== Top 5 pixels ================
+The top 5 correlating pixels for col Speed Limit 20 are:
+[' 1362' ' 982' ' 1030' ' 1315' ' 1314']
+The top 5 correlating pixels for col Speed Limit 30 are:
+[' 1030' ' 1029' ' 1077' ' 981' ' 1078']
+The top 5 correlating pixels for col Speed Limit 50 are:
+[' 1122' ' 581' ' 582' ' 629' ' 580']
+The top 5 correlating pixels for col Speed Limit 60 are:
+[' 1218' ' 1265' ' 1313' ' 1266' ' 1219']
+The top 5 correlating pixels for col Speed Limit 70 are:
+[' 983' ' 1031' ' 1030' ' 982' ' 935']
+The top 5 correlating pixels for col Left Turn are:
+[' 1612' ' 1320' ' 1564' ' 1216' ' 1264']
+The top 5 correlating pixels for col Right Turn are:
+[' 793' ' 794' ' 841' ' 842' ' 792']
+The top 5 correlating pixels for col Beware Pedestrian Crossing are:
+[' 1176' ' 1224' ' 1086' ' 1215' ' 795']
+The top 5 correlating pixels for col Beware Children are:
+[' 747' ' 795' ' 796' ' 1215' ' 1263']
+The top 5 correlating pixels for col Beware Cycle Route Ahead are:
+[' 1134' ' 1215' ' 1263' ' 1086' ' 1216']
+Multinomial Naive Bayes model accuracy(in %): 52.218782249742
+                            Speed Limit 20  Speed Limit 30  Speed Limit 50  Speed Limit 60  Speed Limit 70  Left Turn  Right Turn  Beware Pedestrian Crossing  Beware Children  Beware Cycle Route Ahead
+Speed Limit 20                          55               3               1               6              20          0           0                           0                0                         0
+Speed Limit 30                          47             358             107             126             248          3           2                           7                0                         4
+Speed Limit 50                           0              68             642             106              38         15           5                           1               10                         4
+Speed Limit 60                           1              11             274             220              11         21           0                           0               22                        12
+Speed Limit 70                          90              51              48              56             479          9           0                           7                9                         2
+Left Turn                                0               0               5               3               0         54           1                           7               10                        10
+Right Turn                               2               3               5              25               1          6          29                           7               69                         3
+Beware Pedestrian Crossing               0               3               1               9               3         12           6                          57                3                         0
+Beware Children                          0               2               8              22               2         30          37                           3              103                        13
+Beware Cycle Route Ahead                 4               0              17              14               0         18           1                           0               42                        27
+                            precision    recall  f1-score   support
+
+            Speed Limit 20       0.28      0.65      0.39        85
+            Speed Limit 30       0.72      0.40      0.51       902
+            Speed Limit 50       0.58      0.72      0.64       889
+            Speed Limit 60       0.37      0.38      0.38       572
+            Speed Limit 70       0.60      0.64      0.62       751
+                 Left Turn       0.32      0.60      0.42        90
+                Right Turn       0.36      0.19      0.25       150
+Beware Pedestrian Crossing       0.64      0.61      0.62        94
+           Beware Children       0.38      0.47      0.42       220
+  Beware Cycle Route Ahead       0.36      0.22      0.27       123
+
+                  accuracy                           0.52      3876
+                 macro avg       0.46      0.49      0.45      3876
+              weighted avg       0.55      0.52      0.52      3876
+
+=========== Top 10 pixels ================
+The top 10 correlating pixels for col Speed Limit 20 are:
+[' 1362' ' 982' ' 1030' ' 1315' ' 1314' ' 1078' ' 1409' ' 1031' ' 1410'
+ ' 934']
+The top 10 correlating pixels for col Speed Limit 30 are:
+[' 1030' ' 1029' ' 1077' ' 981' ' 1078' ' 1172' ' 1366' ' 1414' ' 1221'
+ ' 1461']
+The top 10 correlating pixels for col Speed Limit 50 are:
+[' 1122' ' 581' ' 582' ' 629' ' 580' ' 533' ' 532' ' 628' ' 1123' ' 484']
+The top 10 correlating pixels for col Speed Limit 60 are:
+[' 1218' ' 1265' ' 1313' ' 1266' ' 1219' ' 1361' ' 1217' ' 1312' ' 1314'
+ ' 1171']
+The top 10 correlating pixels for col Speed Limit 70 are:
+[' 983' ' 1031' ' 1030' ' 982' ' 935' ' 2095' ' 2096' ' 2050' ' 2094'
+ ' 2097']
+The top 10 correlating pixels for col Left Turn are:
+[' 1612' ' 1320' ' 1564' ' 1216' ' 1264' ' 1263' ' 1321' ' 747' ' 1311'
+ ' 699']
+The top 10 correlating pixels for col Right Turn are:
+[' 793' ' 794' ' 841' ' 842' ' 792' ' 745' ' 1134' ' 795' ' 744' ' 1182']
+The top 10 correlating pixels for col Beware Pedestrian Crossing are:
+[' 1176' ' 1224' ' 1086' ' 1215' ' 795' ' 1128' ' 1272' ' 1135' ' 1038'
+ ' 1134']
+The top 10 correlating pixels for col Beware Children are:
+[' 747' ' 795' ' 796' ' 1215' ' 1263' ' 1038' ' 1087' ' 1135' ' 1167'
+ ' 746']
+The top 10 correlating pixels for col Beware Cycle Route Ahead are:
+[' 1134' ' 1215' ' 1263' ' 1086' ' 1216' ' 1167' ' 1610' ' 1562' ' 1168'
+ ' 1561']
+Multinomial Naive Bayes model accuracy(in %): 52.42518059855521
+                            Speed Limit 20  Speed Limit 30  Speed Limit 50  Speed Limit 60  Speed Limit 70  Left Turn  Right Turn  Beware Pedestrian Crossing  Beware Children  Beware Cycle Route Ahead
+Speed Limit 20                          53               6               2               8              16          0           0                           0                0                         0
+Speed Limit 30                          43             384             107             147             192          9           6                           1                2                        11
+Speed Limit 50                           8              66             577             114              86         18           5                           0                4                        11
+Speed Limit 60                           3              10             304             222              11          5           3                           0               12                         2
+Speed Limit 70                          85              34              12              66             522         18           3                           3                6                         2
+Left Turn                                0               0               3               1               0         61           3                          11                4                         7
+Right Turn                               4               1               7              27               1         27          30                           2               47                         4
+Beware Pedestrian Crossing               0               4               0               9               2         20           3                          52                1                         3
+Beware Children                          0               3               9              16               0         28          26                           3              102                        33
+Beware Cycle Route Ahead                 4               1              12              15               1          1           0                           0               60                        29
+                            precision    recall  f1-score   support
+
+            Speed Limit 20       0.27      0.62      0.37        85
+            Speed Limit 30       0.75      0.43      0.54       902
+            Speed Limit 50       0.56      0.65      0.60       889
+            Speed Limit 60       0.36      0.39      0.37       572
+            Speed Limit 70       0.63      0.70      0.66       751
+                 Left Turn       0.33      0.68      0.44        90
+                Right Turn       0.38      0.20      0.26       150
+Beware Pedestrian Crossing       0.72      0.55      0.63        94
+           Beware Children       0.43      0.46      0.45       220
+  Beware Cycle Route Ahead       0.28      0.24      0.26       123
+
+                  accuracy                           0.52      3876
+                 macro avg       0.47      0.49      0.46      3876
+              weighted avg       0.56      0.52      0.52      3876
+
+=========== Top 20 pixels ================
+The top 20 correlating pixels for col Speed Limit 20 are:
+[' 1362' ' 982' ' 1030' ' 1315' ' 1314' ' 1078' ' 1409' ' 1031' ' 1410'
+ ' 934' ' 1510' ' 1267' ' 1457' ' 1511' ' 1505' ' 1458' ' 983' ' 1361'
+ ' 1509' ' 1363']
+The top 20 correlating pixels for col Speed Limit 30 are:
+[' 1030' ' 1029' ' 1077' ' 981' ' 1078' ' 1172' ' 1366' ' 1414' ' 1221'
+ ' 1461' ' 1125' ' 1220' ' 1318' ' 1269' ' 982' ' 1506' ' 1508' ' 1507'
+ ' 1413' ' 1505']
+The top 20 correlating pixels for col Speed Limit 50 are:
+[' 1122' ' 581' ' 582' ' 629' ' 580' ' 533' ' 532' ' 628' ' 1123' ' 484'
+ ' 534' ' 485' ' 436' ' 676' ' 535' ' 486' ' 388' ' 389' ' 437' ' 677']
+The top 20 correlating pixels for col Speed Limit 60 are:
+[' 1218' ' 1265' ' 1313' ' 1266' ' 1219' ' 1361' ' 1217' ' 1312' ' 1314'
+ ' 1171' ' 1170' ' 1360' ' 1264' ' 1362' ' 1267' ' 1409' ' 1220' ' 1408'
+ ' 1172' ' 1216']
+The top 20 correlating pixels for col Speed Limit 70 are:
+[' 983' ' 1031' ' 1030' ' 982' ' 935' ' 2095' ' 2096' ' 2050' ' 2094'
+ ' 2097' ' 2049' ' 2078' ' 2098' ' 2077' ' 2030' ' 2076' ' 2099' ' 2075'
+ ' 2080' ' 2051']
+The top 20 correlating pixels for col Left Turn are:
+[' 1612' ' 1320' ' 1564' ' 1216' ' 1264' ' 1263' ' 1321' ' 747' ' 1311'
+ ' 699' ' 1215' ' 1272' ' 748' ' 1168' ' 1043' ' 700' ' 1021' ' 1069'
+ ' 698' ' 1516']
+The top 20 correlating pixels for col Right Turn are:
+[' 793' ' 794' ' 841' ' 842' ' 792' ' 745' ' 1134' ' 795' ' 744' ' 1182'
+ ' 746' ' 1086' ' 1133' ' 1085' ' 743' ' 791' ' 1181' ' 840' ' 1264'
+ ' 1230']
+The top 20 correlating pixels for col Beware Pedestrian Crossing are:
+[' 1176' ' 1224' ' 1086' ' 1215' ' 795' ' 1128' ' 1272' ' 1135' ' 1038'
+ ' 1134' ' 1263' ' 1167' ' 1120' ' 747' ' 746' ' 1168' ' 1087' ' 1183'
+ ' 794' ' 796']
+The top 20 correlating pixels for col Beware Children are:
+[' 747' ' 795' ' 796' ' 1215' ' 1263' ' 1038' ' 1087' ' 1135' ' 1167'
+ ' 746' ' 748' ' 1168' ' 1216' ' 698' ' 1120' ' 1086' ' 699' ' 1311'
+ ' 1310' ' 1262']
+The top 20 correlating pixels for col Beware Cycle Route Ahead are:
+[' 1134' ' 1215' ' 1263' ' 1086' ' 1216' ' 1167' ' 1610' ' 1562' ' 1168'
+ ' 1561' ' 1182' ' 1311' ' 794' ' 1183' ' 1120' ' 1119' ' 1264' ' 1262'
+ ' 1214' ' 1085']
+Multinomial Naive Bayes model accuracy(in %): 46.92982456140351
+                            Speed Limit 20  Speed Limit 30  Speed Limit 50  Speed Limit 60  Speed Limit 70  Left Turn  Right Turn  Beware Pedestrian Crossing  Beware Children  Beware Cycle Route Ahead
+Speed Limit 20                          56               3               4              10              11          1           0                           0                0                         0
+Speed Limit 30                          58             291             142             193             179          6           7                           2                8                        16
+Speed Limit 50                          19              69             449             120             184         19           7                           0                4                        18
+Speed Limit 60                           5              31             267             215              34          3           0                           0               15                         2
+Speed Limit 70                          42              39              17              79             539         11           3                           2               11                         8
+Left Turn                                0               0               1               1               0         69           3                           6                4                         6
+Right Turn                               2               1               5              29               3         36          27                           6               36                         5
+Beware Pedestrian Crossing               0               1               0               9               0         19           8                          54                0                         3
+Beware Children                          0               2               6              22               1         41          28                           1               94                        25
+Beware Cycle Route Ahead                 4               1              12              17               5         11           0                           0               48                        25
+                            precision    recall  f1-score   support
+
+            Speed Limit 20       0.30      0.66      0.41        85
+            Speed Limit 30       0.66      0.32      0.43       902
+            Speed Limit 50       0.50      0.51      0.50       889
+            Speed Limit 60       0.31      0.38      0.34       572
+            Speed Limit 70       0.56      0.72      0.63       751
+                 Left Turn       0.32      0.77      0.45        90
+                Right Turn       0.33      0.18      0.23       150
+Beware Pedestrian Crossing       0.76      0.57      0.65        94
+           Beware Children       0.43      0.43      0.43       220
+  Beware Cycle Route Ahead       0.23      0.20      0.22       123
+
+                  accuracy                           0.47      3876
+                 macro avg       0.44      0.47      0.43      3876
+              weighted avg       0.50      0.47      0.46      3876
