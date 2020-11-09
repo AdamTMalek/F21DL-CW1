@@ -12,75 +12,36 @@ from pathlib import Path
 from dataframe_manipulation import load_image_data, shuffle_dataframe
 from dataframe_manipulation import separate_x_and_y
 from sklearn.cluster import KMeans
-from tabulate import tabulate
 
 
-def single_image_line_plot(x_data: DataFrame, y_pred: DataFrame, k: int, show: bool) -> None:
-    x_data.loc[:, 'Cluster'] = y_pred
-    for x in range(0, k):
-        only_class = x_data.loc[x_data['Cluster'] == x]
-        plot_label = "Image data clustered as " + str(x)
-        fig, ax = plt.subplots(1)
-        fig = pd.pandas.plotting.parallel_coordinates(
-            only_class.head(50), color='red', class_column='Cluster', linewidth=0.3, axvlines=False)
-
-        # Plot formatting
-        ax.set_xlabel('Pixel Position')
-        ax.set_ylabel('Pixel Value')
-        ax.set_xticklabels([])
-        ax.set_title(plot_label)
-        plt.savefig(f'../evidence/K-Means/Line Screenshots/Cluster_{x}')
-        if show:
-            plt.show()
-
-
-def multi_image_line_plot(x_data: DataFrame, y_pred: DataFrame, show: bool, normalised: bool) -> None:
-    x_data.loc[:, 'Cluster'] = y_pred
-    fig, ax = plt.subplots(1)
-
-    fig = pd.pandas.plotting.parallel_coordinates(
-        x_data.head(25), 'Cluster', linewidth=0.3, axvlines=False)
-    ax.set_xlabel('Pixel Position')
-    ax.set_ylabel('Pixel Value')
-    ax.set_xticklabels([])
-    ax.set_title("Image Data Parallel Coordinate Plot")
-    if normalised:
-        plt.savefig(f'../evidence/K-Means/Image Data Parallel Coordinate Plot (Normalised)')
-    else:
-        plt.savefig(f'../evidence/K-Means/Image Data Parallel Coordinate Plot')
-    if show:
-        plt.show()
-
-
-def plot_entire_clusters(cluster: Dict, cluster_center: Dict, normalised: bool, show: bool) -> None:
+def plot_entire_clusters(clusters: Dict, normalised: bool, show: bool) -> None:
     """"
     Plots all entries in cluster onto a scatter graph and saves it. Use show param to display the graph
-
     :param cluster: Dictionary where key is cluster id and value is the images clustered into the cluster
     :param cluster_center: Dictionary where key is cluster id and value is the pixel values of the center point of each
     cluster
     :param normalised: To determine if result needs to be saved to normalised folder
     :param show: To determine if the graph needs to be displayed
     """
-    for i in range(len(cluster)):
-        x_values = cluster[i].keys()
-        pics = cluster[i].values
-        fig = plt.figure(f'Cluster {i}')
-        ax = fig.add_subplot(111)
-        for val in pics:
-            ax.scatter(x_values[:], val[:], zorder=1)
-        ax.scatter(x_values[:], cluster_center[i][:], marker="x", zorder=2, label="Cluster centers")
-        ax.set_xlabel('Pixel Position')
-        ax.set_ylabel('Pixel Value')
-        ax.set_title(f'Cluster {i}\'s images relative to cluster center')
-        ax.legend(loc='upper right')
-        if normalised:
-            plt.savefig(f'../evidence/K-Means/Cluster Screenshots/Normalised/Cluster_{i}.png')
-        else:
-            plt.savefig(f'../evidence/K-Means/Cluster Screenshots/Not Normalised/Cluster_{i}.png')
-        if show:
-            plt.show()
-        plt.close(fig)
+    for x in range(len(clusters)):
+        cluster = clusters[x]['data']
+        for i in range(len(cluster)):
+            x_values = cluster[i].keys()
+            pics = cluster[i].values
+            fig = plt.figure(f'Cluster {i}')
+            ax = fig.add_subplot(111)
+            for val in pics:
+                ax.scatter(x_values[:], val[:], zorder=1)
+            ax.set_xlabel('Pixel Position')
+            ax.set_ylabel('Pixel Value')
+            ax.set_title(f'Cluster {i}\'s images')
+            if normalised:
+                plt.savefig(f'../evidence/K-Means/Cluster Screenshots/Normalised/Cluster_{i}.png')
+            else:
+                plt.savefig(f'../evidence/K-Means/Cluster Screenshots/Not Normalised/Cluster_{i}.png')
+            if show:
+                plt.show()
+            plt.close(fig)
 
 
 def find_best_k(x_data: DataFrame) -> int:
@@ -172,6 +133,14 @@ def k_means_clustering(images: DataFrame, normalise: bool) -> Dict:
     return results
 
 
+def print_cluster_results(accuracy: Dict) -> None:
+    for k in range(len(accuracy.keys())):
+        print(f'0: {accuracy[k][0]} |1: {accuracy[k][1]} |2: {accuracy[k][2]} |3: {accuracy[k][3]}'
+              f' |4: {accuracy[k][4]} |5: {accuracy[k][5]} |6: {accuracy[k][6]} |7: {accuracy[k][7]}'
+              f' |8: {accuracy[k][8]} |9: {accuracy[k][9]} |Inertia: {accuracy[k]["inertia"]}'
+              f' |Total accuracy: {accuracy[k]["total"]} | Rand: {accuracy[k]["rand"]}')
+
+
 def main(sys_args):
     """"
     This is very slow. It is slow because it collects the data of 5 different k means runs and then prints it.
@@ -181,30 +150,28 @@ def main(sys_args):
     shuffled_images = shuffle_dataframe(images)
     _, original_y = separate_x_and_y(shuffled_images)
     original_y.columns = ['original']
-    accuracy = {}
+    k_means_data = {}
+    analysed_results = {}
+
+    # Non-Normalised data
+    print('============================ Non-normalised Data ============================')
+    for i in range(0, 5):
+        result = k_means_clustering(images=shuffled_images, normalise=False)
+        k_means_data[i] = result
+        analysed_results[i] = accuracy_of_clusters(y_data=original_y, new_groups=result['cluster'])
+        analysed_results[i]['inertia'] = result['inertia']
+    print_cluster_results(analysed_results)
+    plot_entire_clusters(k_means_data, normalised=False, show=False)
+
+    # Normalised data
+    print('============================ Normalised Data ============================')
     for i in range(0, 5):
         result = k_means_clustering(images=shuffled_images, normalise=True)
-        accuracy[i] = accuracy_of_clusters(y_data=original_y, new_groups=result['cluster'])
-        accuracy[i]['inertia'] = result['inertia']
-    for k in range(len(accuracy.keys())):
-        print(accuracy[k])
-
-    # for i in range(len(clusters)):
-    #     cluster_to_csv(clusters[i], i, normalise)
-    # plot_entire_clusters(clusters, cluster_centers, normalised=normalise, show=False)
-
-    # path = Path("../evidence/K-Means")
-    # if path.is_dir():
-    #     if normalise:
-    #         full_path = Path(f'{path}/inertia_nomalised.txt')
-    #     else:
-    #         full_path = Path(f'{path}/inertia_non-normalised.txt')
-    #     with open(full_path, 'a') as f:
-    #         f.write(f"{kmeans.inertia_}\n")
-
-    # parallel_coord_plot(x_data, y_pred, show=False, normalised=normalise)
-    # coord_plot(x_data, y_pred, k, False)
-
+        k_means_data[i] = result
+        analysed_results[i] = accuracy_of_clusters(y_data=original_y, new_groups=result['cluster'])
+        analysed_results[i]['inertia'] = result['inertia']
+    print_cluster_results(analysed_results)
+    plot_entire_clusters(k_means_data, normalised=True, show=False)
 
 if __name__ == "__main__":
     main(sys.argv)
