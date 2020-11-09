@@ -7,7 +7,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from classes import classes
 from dataframe_manipulation import load_image_data, shuffle_dataframe, load_image_data_with_ten_one
-from clustering import coord_plot, parallel_coord_plot
 
 #https://www.ritchievink.com/blog/2018/05/18/algorithm-breakdown-affinity-propagation/
 #https://scikit-learn.org/stable/auto_examples/cluster/plot_affinity_propagation.html#sphx-glr-auto-examples-cluster-plot-affinity-propagation-py
@@ -30,8 +29,6 @@ def ap_clustering(images):
     print("Num: ", af.preference, " - Accuracy: ", accuracy, "%   - Dataset Length: ", len(y_data))
     print("Iterations: ", af.n_iter_, " Centres: ", af.cluster_centers_ , " Number of clusters: ", len(af.cluster_centers_))
 
-    parallel_coord_plot(x_data, y_pred)
-    # coord_plot(x_data, y_pred, n_clusters_)
 
 #Load image data
 images = load_image_data(

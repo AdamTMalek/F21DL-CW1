@@ -7,7 +7,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from classes import classes
 from dataframe_manipulation import load_image_data, shuffle_dataframe, load_image_data_with_ten_one
-from clustering import coord_plot, parallel_coord_plot
 
 def select_best(arr:list, X:int)->list:
     '''
@@ -84,8 +83,6 @@ def em_clustering(images):
         accuracy = (correct / len(y_data)) * 100
         print("Num: ", i, " - Accuracy: ", accuracy, "%   - Dataset Length: ", len(y_data))
 
-    # parallel_coord_plot(x_data, y_pred)
-    # coord_plot(x_data, y_pred, components)
 
 images = load_image_data(
     "c:/Users/bruce/Desktop/Education/Uni Work/F20DL/F21DL-CW1/data/x_train_gr_smpl_pruned_20.csv", "c:/Users/bruce/Desktop/Education/Uni Work/F20DL/F21DL-CW1/data/y_train_gr_smpl_pruned_20.csv") 
