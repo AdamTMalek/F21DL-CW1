@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from classes import classes
 from dataframe_manipulation import load_image_data, shuffle_dataframe, load_image_data_with_ten_one
 
+#Draw cluster plot
 def coord_plot(x_data, y_pred, k):
     x_data.loc[:, 'Cluster'] = y_pred
     for x in range(0, k):
@@ -24,7 +25,7 @@ def coord_plot(x_data, y_pred, k):
         ax.set_title(plot_label)
         plt.show()
 
-
+#Draw parallel data plot
 def parallel_coord_plot(x_data, y_pred):
     x_data.loc[:, 'Cluster'] = y_pred
     fig, ax = plt.subplots(1)
@@ -43,7 +44,7 @@ def parallel_coord_plot(x_data, y_pred):
 #https://scikit-learn.org/stable/auto_examples/cluster/plot_affinity_propagation.html#sphx-glr-auto-examples-cluster-plot-affinity-propagation-py
 def ap_clustering(images):
     x_data, y_data = separate_x_and_y(images)  # Extracts x data from image
-    #random_state=5,
+
     #Create Affinity Propagation class
     af = AffinityPropagation(preference=-900*65025,  damping=0.7, max_iter=300)
     y_pred = af.fit_predict(x_data)
@@ -60,12 +61,12 @@ def ap_clustering(images):
     print("Num: ", af.preference, " - Accuracy: ", accuracy, "%   - Dataset Length: ", len(y_data))
     print("Iterations: ", af.n_iter_, " Centres: ", af.cluster_centers_ , " Number of clusters: ", len(af.cluster_centers_))
 
-
-    parallel_coord_plot(x_data, y_pred)
+    #Enable for visualisation
+    # parallel_coord_plot(x_data, y_pred)
     # coord_plot(x_data, y_pred, n_clusters_)
 
 #Load image data
 images = load_image_data(
-    "c:/Users/bruce/Desktop/Education/Uni Work/F20DL/F21DL-CW1/data/x_train_gr_smpl_pruned_20.csv", "c:/Users/bruce/Desktop/Education/Uni Work/F20DL/F21DL-CW1/data/y_train_gr_smpl_pruned_20.csv") 
+    "data/x_train_gr_smpl_pruned_20.csv", "data/y_train_gr_smpl_pruned_20.csv") 
 
 ap_clustering(images)
