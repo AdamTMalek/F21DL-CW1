@@ -1,0 +1,147 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.BayesNet -D -Q weka.classifiers.bayes.net.search.local.HillClimber -- -P 1 -S BAYES -E weka.classifiers.bayes.net.estimate.SimpleEstimator -- -A 0.5
+Relation:     corr_5-weka.filters.unsupervised.attribute.NumericToNominal-Rlast
+Instances:    9690
+Attributes:   42
+               580
+               581
+               582
+               629
+               747
+               792
+               793
+               794
+               795
+               796
+               841
+               842
+               935
+               981
+               982
+               983
+               1029
+               1030
+               1031
+               1077
+               1078
+               1086
+               1122
+               1134
+               1176
+               1215
+               1216
+               1218
+               1219
+               1224
+               1263
+               1264
+               1265
+               1266
+               1313
+               1314
+               1315
+               1320
+               1362
+               1564
+               1612
+              0
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Bayes Network Classifier
+not using ADTree
+#attributes=42 #classindex=41
+Network structure (nodes followed by parents)
+ 580(10): 0 
+ 581(9): 0 
+ 582(9): 0 
+ 629(8): 0 
+ 747(8): 0 
+ 792(9): 0 
+ 793(10): 0 
+ 794(10): 0 
+ 795(8): 0 
+ 796(7): 0 
+ 841(10): 0 
+ 842(8): 0 
+ 935(10): 0 
+ 981(10): 0 
+ 982(11): 0 
+ 983(12): 0 
+ 1029(11): 0 
+ 1030(13): 0 
+ 1031(10): 0 
+ 1077(10): 0 
+ 1078(11): 0 
+ 1086(11): 0 
+ 1122(9): 0 
+ 1134(10): 0 
+ 1176(9): 0 
+ 1215(11): 0 
+ 1216(11): 0 
+ 1218(13): 0 
+ 1219(10): 0 
+ 1224(8): 0 
+ 1263(11): 0 
+ 1264(10): 0 
+ 1265(10): 0 
+ 1266(11): 0 
+ 1313(12): 0 
+ 1314(11): 0 
+ 1315(11): 0 
+ 1320(8): 0 
+ 1362(11): 0 
+ 1564(12): 0 
+ 1612(10): 0 
+0(10): 
+LogScore Bayes: -751724.8157963548
+LogScore BDeu: -768870.6168172425
+LogScore MDL: -766659.970693442
+LogScore ENTROPY: -749546.0054186842
+LogScore AIC: -753275.0054186842
+
+
+Time taken to build model: 0.37 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        3652               37.6883 %
+Incorrectly Classified Instances      6038               62.3117 %
+Kappa statistic                          0.2849
+Mean absolute error                      0.1248
+Root mean squared error                  0.3306
+Relative absolute error                 75.7547 %
+Root relative squared error            115.1672 %
+Total Number of Instances             9690     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.862    0.122    0.135      0.862    0.234      0.312    0.948     0.506     0
+                 0.304    0.119    0.431      0.304    0.356      0.211    0.743     0.413     1
+                 0.418    0.105    0.546      0.418    0.474      0.346    0.765     0.560     2
+                 0.584    0.166    0.375      0.584    0.457      0.352    0.825     0.400     3
+                 0.111    0.002    0.944      0.111    0.198      0.287    0.788     0.635     4
+                 0.214    0.001    0.833      0.214    0.341      0.417    0.918     0.464     5
+                 0.708    0.073    0.273      0.708    0.394      0.407    0.911     0.565     6
+                 0.371    0.024    0.285      0.371    0.322      0.306    0.885     0.359     7
+                 0.396    0.023    0.507      0.396    0.445      0.420    0.814     0.420     8
+                 0.778    0.075    0.230      0.778    0.355      0.396    0.938     0.585     9
+Weighted Avg.    0.377    0.085    0.546      0.377    0.368      0.312    0.797     0.503     
+
+=== Confusion Matrix ===
+
+   a   b   c   d   e   f   g   h   i   j   <-- classified as
+ 181   5   2  16   2   0   0   1   0   3 |   a = 0
+ 659 674 385 302   2   0  45  98   7  48 |   b = 1
+ 144 458 941 289   0   3 117  81  27 190 |   c = 2
+  62  35  21 824   7   4 211  17  59 170 |   d = 3
+ 276 345 280 662 219   0 107  17  17  57 |   e = 4
+   2   6  23  12   1  45  11   0  38  72 |   f = 5
+   2   2   0  38   0   1 255   5  14  43 |   g = 6
+   0   9   8  18   1   0  68  89  33  14 |   h = 7
+   9  19  61  17   0   1 110   4 214 105 |   i = 8
+   4   9   3  20   0   0  11   0  13 210 |   j = 9
