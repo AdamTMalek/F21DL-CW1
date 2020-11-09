@@ -146,7 +146,7 @@ def main(sys_args):
     This is very slow. It is slow because it collects the data of 5 different k means runs and then prints it.
     K means is very computationally taxing.
     """
-    images = load_image_data("../data/x_train_gr_smpl_40.csv", "../data/y_train_smpl.csv")  # Used for naive bayes
+    images = load_image_data("data/x_train_gr_smpl_40.csv", "data/y_train_smpl.csv")  # Used for naive bayes
     shuffled_images = shuffle_dataframe(images)
     _, original_y = separate_x_and_y(shuffled_images)
     original_y.columns = ['original']
