@@ -1,0 +1,147 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.BayesNet -D -Q weka.classifiers.bayes.net.search.local.K2 -- -P 2 -S BAYES -E weka.classifiers.bayes.net.estimate.SimpleEstimator -- -A 0.5
+Relation:     corr_5-weka.filters.unsupervised.attribute.NumericToNominal-Rlast
+Instances:    9690
+Attributes:   42
+               580
+               581
+               582
+               629
+               747
+               792
+               793
+               794
+               795
+               796
+               841
+               842
+               935
+               981
+               982
+               983
+               1029
+               1030
+               1031
+               1077
+               1078
+               1086
+               1122
+               1134
+               1176
+               1215
+               1216
+               1218
+               1219
+               1224
+               1263
+               1264
+               1265
+               1266
+               1313
+               1314
+               1315
+               1320
+               1362
+               1564
+               1612
+              0
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Bayes Network Classifier
+not using ADTree
+#attributes=42 #classindex=41
+Network structure (nodes followed by parents)
+ 580(10): 0 
+ 581(9): 0  580 
+ 582(9): 0  581 
+ 629(8): 0  581 
+ 747(8): 0  581 
+ 792(9): 0  747 
+ 793(10): 0  792 
+ 794(10): 0  793 
+ 795(8): 0  794 
+ 796(7): 0  795 
+ 841(10): 0  793 
+ 842(8): 0  841 
+ 935(10): 0  841 
+ 981(10): 0  935 
+ 982(11): 0  981 
+ 983(12): 0  935 
+ 1029(11): 0  981 
+ 1030(13): 0  982 
+ 1031(10): 0  983 
+ 1077(10): 0  1029 
+ 1078(11): 0  1030 
+ 1086(11): 0  794 
+ 1122(9): 0  842 
+ 1134(10): 0  1086 
+ 1176(9): 0  1134 
+ 1215(11): 0  793 
+ 1216(11): 0  1215 
+ 1218(13): 0  981 
+ 1219(10): 0  1218 
+ 1224(8): 0  1176 
+ 1263(11): 0  1215 
+ 1264(10): 0  1216 
+ 1265(10): 0  1264 
+ 1266(11): 0  1218 
+ 1313(12): 0  1265 
+ 1314(11): 0  1266 
+ 1315(11): 0  1314 
+ 1320(8): 0  1224 
+ 1362(11): 0  1314 
+ 1564(12): 0  1266 
+ 1612(10): 0  1564 
+0(10): 
+LogScore Bayes: -415408.5209832047
+LogScore BDeu: -677310.4291658079
+LogScore MDL: -621691.9561258005
+LogScore ENTROPY: -448812.9113591481
+LogScore AIC: -486481.91135914694
+
+
+Time taken to build model: 0.23 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        7504               77.4407 %
+Incorrectly Classified Instances      2186               22.5593 %
+Kappa statistic                          0.7254
+Mean absolute error                      0.049 
+Root mean squared error                  0.186 
+Relative absolute error                 29.7603 %
+Root relative squared error             64.8073 %
+Total Number of Instances             9690     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.562    0.006    0.686      0.562    0.618      0.613    0.982     0.715     0
+                 0.770    0.081    0.739      0.770    0.754      0.679    0.941     0.847     1
+                 0.751    0.055    0.804      0.751    0.777      0.713    0.946     0.875     2
+                 0.860    0.043    0.775      0.860    0.815      0.783    0.975     0.900     3
+                 0.813    0.059    0.780      0.813    0.796      0.743    0.964     0.894     4
+                 0.643    0.003    0.833      0.643    0.726      0.727    0.986     0.804     5
+                 0.708    0.008    0.782      0.708    0.743      0.735    0.982     0.820     6
+                 0.658    0.001    0.919      0.658    0.767      0.773    0.993     0.895     7
+                 0.785    0.013    0.779      0.785    0.782      0.769    0.987     0.852     8
+                 0.711    0.008    0.714      0.711    0.712      0.704    0.978     0.786     9
+Weighted Avg.    0.774    0.051    0.776      0.774    0.774      0.725    0.960     0.866     
+
+=== Confusion Matrix ===
+
+    a    b    c    d    e    f    g    h    i    j   <-- classified as
+  118   44    4    5   37    0    0    0    2    0 |    a = 0
+   26 1710  175   63  228    1    4    2    8    3 |    b = 1
+    1  265 1690  142  133    3    2    1    8    5 |    c = 2
+    2   52   83 1213   34    2   11    0    7    6 |    d = 3
+   25  204  102   36 1609    0    0    0    3    1 |    e = 4
+    0    3   11   11    4  135    9    1   29    7 |    f = 5
+    0   12    4   33    3   10  255    5   21   17 |    g = 6
+    0   11   12    6   10    2   20  158   15    6 |    h = 7
+    0    5   11   40    2    6   17    3  424   32 |    i = 8
+    0    9   10   17    2    3    8    2   27  192 |    j = 9
