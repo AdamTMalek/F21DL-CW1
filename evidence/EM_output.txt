@@ -1,0 +1,41 @@
+Top 5 pixels (num= cluster count)
+Num:  2  - Accuracy:  10.546955624355006 %   - Dataset Length:  9690
+Num:  4  - Accuracy:  15.675954592363261 %   - Dataset Length:  9690
+Num:  5  - Accuracy:  11.702786377708978 %   - Dataset Length:  9690
+Num:  6  - Accuracy:  12.136222910216718 %   - Dataset Length:  9690
+Num:  7  - Accuracy:  15.046439628482972 %   - Dataset Length:  9690
+Num:  8  - Accuracy:  10.557275541795667 %   - Dataset Length:  9690
+Num:  9  - Accuracy:  6.656346749226007 %   - Dataset Length:  9690
+Num:  10  - Accuracy:  14.35500515995872 %   - Dataset Length:  9690
+Num:  11  - Accuracy:  7.389060887512899 %   - Dataset Length:  9690
+Num:  12  - Accuracy:  9.865841073271413 %   - Dataset Length:  9690
+Num:  13  - Accuracy:  4.643962848297214 %   - Dataset Length:  9690
+Num:  14  - Accuracy:  5.252837977296182 %   - Dataset Length:  9690
+
+Top 10 pixels (num= cluster count)
+Num:  2  - Accuracy:  11.30030959752322 %   - Dataset Length:  9690
+Num:  4  - Accuracy:  23.364293085655316 %   - Dataset Length:  9690
+Num:  5  - Accuracy:  19.050567595459235 %   - Dataset Length:  9690
+Num:  6  - Accuracy:  14.778121775025799 %   - Dataset Length:  9690
+Num:  7  - Accuracy:  9.029927760577916 %   - Dataset Length:  9690
+Num:  8  - Accuracy:  21.186790505675955 %   - Dataset Length:  9690
+Num:  9  - Accuracy:  10.4437564499484 %   - Dataset Length:  9690
+Num:  10  - Accuracy:  11.001031991744066 %   - Dataset Length:  9690
+Num:  11  - Accuracy:  17.523219814241486 %   - Dataset Length:  9690
+Num:  12  - Accuracy:  10.42311661506708 %   - Dataset Length:  9690
+Num:  13  - Accuracy:  11.888544891640866 %   - Dataset Length:  9690
+Num:  14  - Accuracy:  5.6656346749226 %   - Dataset Length:  9690
+
+Top 20 pixels (num= cluster count)
+Num:  2  - Accuracy:  13.07533539731682 %   - Dataset Length:  9690
+Num:  4  - Accuracy:  11.31062951496388 %   - Dataset Length:  9690
+Num:  5  - Accuracy:  13.828689370485037 %   - Dataset Length:  9690
+Num:  6  - Accuracy:  7.595459236326109 %   - Dataset Length:  9690
+Num:  7  - Accuracy:  18.369453044375643 %   - Dataset Length:  9690
+Num:  8  - Accuracy:  10.350877192982457 %   - Dataset Length:  9690
+Num:  9  - Accuracy:  16.367389060887515 %   - Dataset Length:  9690
+Num:  10  - Accuracy:  12.043343653250774 %   - Dataset Length:  9690
+Num:  11  - Accuracy:  11.805985552115583 %   - Dataset Length:  9690
+Num:  12  - Accuracy:  4.427244582043343 %   - Dataset Length:  9690
+Num:  13  - Accuracy:  4.963880288957688 %   - Dataset Length:  9690
+Num:  14  - Accuracy:  5.634674922600619 %   - Dataset Length:  9690
