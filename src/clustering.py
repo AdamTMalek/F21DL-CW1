@@ -42,16 +42,21 @@ def parallel_coord_plot(x_data, y_pred):
 
 
 def find_best_k(x_data):
-    kmeans_per_k = [KMeans(n_clusters=k, random_state=1).fit(x_data)
-                    for k in range(1, 10)]
+    kmeans_per_k = [
+        KMeans(n_clusters=k, random_state=1).fit(x_data) for k in range(1, 15)
+    ]
     inertias = [model.inertia_ for model in kmeans_per_k]
-    index_of_largest = inertias.index(min(inertias))
-    return index_of_largest
+    # plot the cost against K values
+    plt.plot(range(1, 15), inertias, color="g", linewidth="3")
+    plt.xlabel("Value of K")
+    plt.ylabel("Inertia")
+    plt.show()  # clear the plot
 
 
 def k_means_clustering(images):
     x_data, _ = separate_x_and_y(images)  # Extracts x data from image
-    k = find_best_k(x_data)
+    find_best_k(x_data)
+    k = 6
     kmeans = KMeans(n_clusters=k, random_state=1)
     y_pred = kmeans.fit_predict(x_data)
     print("The kmeans inertia (lower is better) is", kmeans.inertia_)
