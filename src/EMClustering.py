@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from classes import classes
 from dataframe_manipulation import load_image_data, shuffle_dataframe, load_image_data_with_ten_one
 
+# Based on code from https://towardsdatascience.com/gaussian-mixture-model-clusterization-how-to-select-the-number-of-components-clusters-553bef45f6e4 by Vincenzo Lavorini
 def select_best(arr:list, X:int)->list:
     '''
     returns the set of X configurations with shorter distance
@@ -68,13 +69,13 @@ def em_clustering(images):
     for i in range(2, 15):
         x_data, y_data = separate_x_and_y(images)  # Extracts x data from image
 
-        #
+        #Create Gaussian Mixture class
         gmm = mixture.GaussianMixture(
             n_components=i, covariance_type='full', n_init=3)
 
         y_pred = gmm.fit_predict(x_data)
 
-        #Yes you could almost definitely do this better
+        #Calculate how many predicted classes are correct classes
         correct = 0
         for index, row in y_data.iterrows():
             if y_pred[index] == row.iloc[0]:
